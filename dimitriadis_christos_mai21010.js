@@ -4,7 +4,7 @@ self.addEventListener('install', function (event) {
   event.waitUntil(
     caches.open('to-do').then(function (cache) {
       return cache.addAll([
-        '/dimitriadis_christos_mai21010.html',
+        '/index.html',
         '/rs.png',
         '/mail.png'
       ]);
