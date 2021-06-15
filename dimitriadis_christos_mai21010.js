@@ -4,7 +4,7 @@ self.addEventListener('install', function (event) {
   event.waitUntil(
     caches.open('to-do').then(function (cache) {
       return cache.addAll([
-        '/index.html',
+        '/dimitriadis_christos_mai21010.html',
         '/rs.png',
         '/mail.png'
       ]);
@@ -75,8 +75,8 @@ function setAttributes(el, attrs) {
   }
 }
 
-function fillHtmlElementsWithUserInfoData(object) {
-  for (const [key, value] of Object.entries(object)) {
+function fillHtmlElementsWithUserInfoData() {
+  for (const [key, value] of Object.entries(userInfo)) {
     let elementId = key + "-info";
     let element = document.getElementById(elementId);
     if (element.tagName === 'IMG') {
@@ -85,6 +85,8 @@ function fillHtmlElementsWithUserInfoData(object) {
       element.innerHTML = value;
     }
   }
+
+  document.getElementById('main-name').innerHTML = userInfo.fullname;
 }
 
 
@@ -145,7 +147,7 @@ function initDataFromStorageOnFailRequestInitialize() {
     return;
   }
 
-  fillHtmlElementsWithUserInfoData(userInfo);
+  fillHtmlElementsWithUserInfoData();
   worldPlayerStatistics.push(myWorldStatistics);
 }
 
