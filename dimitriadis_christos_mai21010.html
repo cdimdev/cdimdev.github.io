@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="manifest" href="manifest.json">
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Tennis Statistics</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
+      <span class="navbar-brand">Menu</span>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#" id="link-menu-home">Αρχική Σελίδα <span class="sr-only"></span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#firstname-world-class" id="link-menu-world-stats-table">Πίνακας Παγκόσμιας κατάταξης<span class="sr-only"></span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#email-form" id= "link-menu-newsletter">Newsletter</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Επιλογές Προβολής
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <span class="dropdown-item" id='hide-min'> Ελάχιστη Απόκρυψη Στοιχείων</span>
+              <span class="dropdown-item" id='hide-max' > Μέγιστη Απόκρυψη Στοιχείων</span>
+              <div class="dropdown-divider"></div>
+              <span class="dropdown-item active-dropdown" id="hide-none">Πλήρης Προβολή</span>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" id= "edit-mode-toggle">Λειτουργία Επεξεργασίας</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      <div id="myModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Subscribe our Newsletter</h5>
+                </div>
+                <div class="modal-body">
+                    <p>To initialize site please fill the form</p>
+                    <form id = 'init-form-step-1'>
+                        <div class="form-group">
+                            <input required type="text" id = 'firstname-init'  class="form-control" placeholder="Firstname">
+                        </div>
+                        <div class="form-group">
+                          <input required type="text" class="form-control"  id='lastname-init' placeholder="Lastname">
+                      </div>
+                      <div class="form-group">
+                        <input required type="url" class="form-control" id='pic-init' placeholder="Picture URL (Suggested resolution at least 150 x 141)">
+                    </div>
+                        <div class="form-group">
+                            <input required type="email" class="form-control" id='email-init' placeholder="Email Address">
+                        </div>
+                        <div class="form-group">
+                          <input required class="form-control" id='phone-init' placeholder="Phone">
+                      </div>
+                      <div class="form-group">
+                        <input required class="form-control" id='mobile-init' placeholder="Mobile Phone">
+                    </div>
+                      <div class="form-group">
+                        <input required type="text" class="form-control" id='address-init' placeholder="Address">
+                    </div>
+                    <div class="form-group">
+                      <input required type="number" class="form-control" id='total-score-init' placeholder="Total Points in world championship">
+                  </div>
+                        <button type="submit" id='init-website' class="btn btn-primary">Initialize Website
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+      <div class="main-body">
+        <!-- bootstrap responsive using -->
+        <div class="row gutters-sm">
+          <div class="col-md-4 mb-3">
+            <div class="card">
+              <div class="card-body">
+                <div class="d-flex flex-column align-items-center text-center">
+                  <img
+                    src="#"
+                    alt="profilePicture"
+                    id = "profilePicture-info"
+                    class="rounded-circle"
+                    width="150"
+                  />
+                  <div class="mt-3">
+                    <h4>Novak Djokovic</h4>
+                    <img src="rs.png" />
+                    <p class="text-secondary mb-1">Professional Tenist</p>
+                    <p class="text-muted font-size-sm">Location</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card mt-3">
+              <ul class="list-group list-group-flush">
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                >
+                  <h6 class="mb-0">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="feather feather-globe mr-2 icon-inline"
+                    >
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="2" y1="12" x2="22" y2="12"></line>
+                      <path
+                        d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+                      ></path></svg
+                    >Website
+                  </h6>
+                  <span class="text-secondary" id ='editable-website'>https://DjokerNole.com</span>
+                </li>
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                >
+                  <h6 class="mb-0">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="feather feather-twitter mr-2 icon-inline text-info"
+                    >
+                      <path
+                        d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"
+                      ></path></svg
+                    >Twitter
+                  </h6>
+                  <span class="text-secondary" id='editable-twitter'>@DjokerNole</span>
+                </li>
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                >
+                  <h6 class="mb-0">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="feather feather-instagram mr-2 icon-inline text-danger"
+                    >
+                      <rect
+                        x="2"
+                        y="2"
+                        width="20"
+                        height="20"
+                        rx="5"
+                        ry="5"
+                      ></rect>
+                      <path
+                        d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                      ></path>
+                      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg
+                    >Instagram
+                  </h6>
+                  <span class="text-secondary" id='editable-instagram'>DjokerNole</span>
+                </li>
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                >
+                  <h6 class="mb-0">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="feather feather-facebook mr-2 icon-inline text-primary"
+                    >
+                      <path
+                        d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                      ></path></svg
+                    >Facebook
+                  </h6>
+                  <span class="text-secondary" id='editable-facebook'>DjokerNole</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="card mb-3">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Full Name</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary" id="fullname-info"></div>
+                </div>
+                <hr class="hidden-min hidden-max"/>
+                <div class="row hidden-min hidden-max">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Email</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary" id="email-info">
+                   
+                  </div>
+                </div>
+                <hr class="hidden-max"/>
+                <div class="row hidden-max">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Phone</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary" id="phone-info"></div>
+                </div>
+                <hr class="hidden-max"/>
+                <div class="row hidden-max">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Mobile</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary" id="mobile-info"></div>
+                </div>
+                <hr class="hidden-max"/>
+                <div class="row hidden-max">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Address</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary" id="address-info"></div>
+                </div>
+              </div>
+            </div>
+            <div class="row gutters-sm">
+              <div class="col-sm-6 mb-3">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <h6 class="d-flex align-items-center mb-3">
+                      <i class="material-icons text-info mr-2"
+                        >Πίνακας Στατιστικών 1</i
+                      >Στατιστικά
+                    </h6>
+                    <small>Στατιστικό 1</small>
+                    <div class="progress mb-3" style="height: 5px">
+                      <div
+                        class="progress-bar bg-primary"
+                        role="progressbar"
+                        style="width: 80%"
+                        aria-valuenow="80"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                    <small>Στατιστικό 2</small>
+                    <div class="progress mb-3 hidden-max" style="height: 5px">
+                      <div
+                        class="progress-bar bg-primary"
+                        role="progressbar"
+                        style="width: 72%"
+                        aria-valuenow="72"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                    <small>Στατιστικό 3</small>
+                    <div class="progress mb-3 hidden-max" style="height: 5px">
+                      <div
+                        class="progress-bar bg-primary"
+                        role="progressbar"
+                        style="width: 89%"
+                        aria-valuenow="89"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                    <small>Στατιστικό 4</small>
+                    <div class="progress mb-3 hidden-min hidden-max" style="height: 5px">
+                      <div
+                        class="progress-bar bg-primary"
+                        role="progressbar"
+                        style="width: 55%"
+                        aria-valuenow="55"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                    <small>Στατιστικό 5</small>
+                    <div class="progress mb-3" style="height: 5px">
+                      <div
+                        class="progress-bar bg-primary"
+                        role="progressbar"
+                        style="width: 66%"
+                        aria-valuenow="66"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 mb-3">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <h6 class="d-flex align-items-center mb-3">
+                      <i class="material-icons text-info mr-2"
+                        >Πίνακας Στατιστικών 2</i
+                      >Στατιστικά
+                    </h6>
+                    <small>Στατιστικό 1</small>
+                    <div class="progress mb-3" style="height: 5px">
+                      <div id="head-stat-1"
+                        class="progress-bar bg-primary"
+                        role="progressbar"
+                        style="width: 0%"
+                        aria-valuenow="0"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                    <small>Στατιστικό 2</small>
+                    <div  class="progress mb-3" style="height: 5px">
+                      <div id="head-stat-2"
+                        class="progress-bar bg-primary"
+                        role="progressbar"
+                        style="width: 0%"
+                        aria-valuenow="0"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                    <small>Στατιστικό 3</small>
+                    <div  class="progress mb-3" style="height: 5px">
+                      <div
+                        id="head-stat-3"
+                        class="progress-bar bg-primary"
+                        role="progressbar"
+                        style="width: 0%"
+                        aria-valuenow="0"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                    <small>Στατιστικό 4</small>
+                    <div  class="progress mb-3" style="height: 5px">
+                      <div 
+                        id="head-stat-4"
+                        class="progress-bar bg-primary"
+                        role="progressbar"
+                        style="width: 0%"
+                        aria-valuenow="0"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                    <small>Στατιστικό 5</small>
+                    <div  class="progress mb-3" style="height: 5px">
+                      <div id="head-stat-5"
+                        class="progress-bar bg-primary"
+                        role="progressbar"
+                        style="width: 0%"
+                        aria-valuenow="0"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="small-table">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <h6 class="d-flex align-items-center mb-3">
+                      <i class="material-icons text-info mr-2"
+                        >Πίνακας Στατιστικών 3</i
+                      >Στατιστικά
+                    </h6>
+                    <small>Στατιστικό 1</small>
+                    <div class="progress mb-3" style="height: 5px">
+                      <div
+                        class="progress-bar bg-primary"
+                        role="progressbar"
+                        style="width: 80%"
+                        aria-valuenow="80"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                    <small>Στατιστικό 2</small>
+                    <div class="progress mb-3" style="height: 5px">
+                      <div
+                        class="progress-bar bg-primary"
+                        role="progressbar"
+                        style="width: 72%"
+                        aria-valuenow="72"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                    <small>Στατιστικό 3</small>
+                    <div class="progress mb-3" style="height: 5px">
+                      <div
+                        class="progress-bar bg-primary"
+                        role="progressbar"
+                        style="width: 89%"
+                        aria-valuenow="89"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                    <small>Στατιστικό 4</small>
+                    <div class="progress mb-3" style="height: 5px">
+                      <div
+                        class="progress-bar bg-primary"
+                        role="progressbar"
+                        style="width: 55%"
+                        aria-valuenow="55"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                    <small>Στατιστικό 5</small>
+                    <div class="progress mb-3" style="height: 5px">
+                      <div
+                        class="progress-bar bg-primary"
+                        role="progressbar"
+                        style="width: 66%"
+                        aria-valuenow="66"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="small-table">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <h6 class="d-flex align-items-center mb-3">
+                      <i class="material-icons text-info mr-2"
+                        >Πίνακας Στατιστικών 4</i
+                      >Στατιστικά
+                    </h6>
+                    <small>Στατιστικό 1</small>
+                    <div class="progress mb-3" style="height: 5px">
+                      <div
+                        class="progress-bar bg-primary"
+                        role="progressbar"
+                        style="width: 80%"
+                        aria-valuenow="80"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                    <small>Στατιστικό 2</small>
+                    <div class="progress mb-3" style="height: 5px">
+                      <div
+                        class="progress-bar bg-primary"
+                        role="progressbar"
+                        style="width: 72%"
+                        aria-valuenow="72"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                    <small>Στατιστικό 3</small>
+                    <div class="progress mb-3" style="height: 5px">
+                      <div
+                        class="progress-bar bg-primary"
+                        role="progressbar"
+                        style="width: 89%"
+                        aria-valuenow="89"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                    <small>Στατιστικό 4</small>
+                    <div class="progress mb-3" style="height: 5px">
+                      <div
+                        class="progress-bar bg-primary"
+                        role="progressbar"
+                        style="width: 55%"
+                        aria-valuenow="55"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                    <small>Στατιστικό 5</small>
+                    <div class="progress mb-3" style="height: 5px">
+                      <div
+                        class="progress-bar bg-primary"
+                        role="progressbar"
+                        style="width: 66%"
+                        aria-valuenow="66"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="hidden-mobile" />
+    <div class="info">
+      <h4>Πληροφορίες Αθλητή</h4>
+      <p  class="paragraph-long hidden-min hidden-max"  id= "editable-paragraph">
+      </p>
+      <p class="hidden-paragraph-on-web" id="editable-paragraph-mobile"></p>
+    </div>
+ <dl>
+  <dt>
+    Ποσοστιαία κατάταξη κερδισμένων αγώνων
+  </dt>
+  <dd class="percentage percentage-49"><span class="text">Novak Djokovic: 49.77%</span></dd>
+  <dd class="percentage percentage-16"><span class="text">Daniil Medvedev: 16.09%</span></dd>
+  <dd class="percentage percentage-5"><span class="text">Rafael Nadal: 5.41%</span></dd>
+  <dd class="percentage percentage-2"><span class="text">Dominic Thiem: 1.62%</span></dd>
+  <dd class="percentage percentage-35"><span class="text">Stefanos Tsitsipas: 35%</span></dd>
+</dl>
+    <hr class="hidden-tablet" />
+    <div class="Table-stats-1">
+      <div class="Title">
+        <h3>Στατιστικά Αθλητή</h3>
+      </div>
+      <div class="Heading">
+        <div class="Cell">
+          <p>Έτος</p>
+        </div>
+        <div class="Cell ">
+          <p>Στατιστικό Χαρακτηριστικό 1</p>
+        </div>
+        <div class="Cell">
+          <p>Στατιστικό Χαρακτηριστικό 2</p>
+        </div>
+        <div class="Cell">
+          <p>Στατιστικό Χαρακτηριστικό 3</p>
+        </div>
+        <div class="Cell hidden-max">
+          <p>Στατιστικό Χαρακτηριστικό 4</p>
+        </div>
+      </div>
+      <div class="Row">
+        <div class="Cell">
+          <p>2019</p>
+        </div>
+        <div class="Cell">
+          <p>55</p>
+        </div>
+        <div class="Cell">
+          <p>33</p>
+        </div>
+        <div class="Cell">
+          <p>66</p>
+        </div>
+        <div class="Cell hidden-max">
+          <p>77</p>
+        </div>
+      </div>
+      <div class="Row">
+        <div class="Cell">
+          <p>2020</p>
+        </div>
+        <div class="Cell">
+          <p>55</p>
+        </div>
+        <div class="Cell">
+          <p>33</p>
+        </div>
+        <div class="Cell">
+          <p>66</p>
+        </div>
+        <div class="Cell hidden-max">
+          <p>77</p>
+        </div>  
+      </div>
+    </div>
+    <hr />
+    <h3>Πίνακας Παγκόσμιας κατάταξης</h3>
+    <div class="scoreboard">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col" id ="firstname-world-class"  class="hidden-max">Όνομα</th>
+            <th scope="col" id ="lastname-world-class">Επώνυμο</th>
+            <th scope="col" id ="points-world-class">Πόντοι</th>
+          </tr>
+        </thead>
+        <tbody id="worldPlayerStatsRows">
+        </tbody>
+      </table>
+    </div>
+    <footer class="bg-white">
+      <div class="container py-5">
+          <div class="col-lg-4 col-md-6 mb-lg-0">
+            <h6 class="text-uppercase font-weight-bold mb-4">Newsletter</h6>
+            <p class="text-muted mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At itaque temporibus.</p>
+            <div class="p-1 rounded border">
+              <div class="input-group">
+                <input type="email" id="email-form" placeholder="Enter your email address" aria-describedby="button-addon1" class="form-control border-0 shadow-0">
+                <div class="input-group-append">
+                  <button id="button-addon1" type="submit" class="btn btn-link"><i class="fa fa-paper-plane"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Copyrights -->
+      <div class="bg-light py-4">
+        <div class="container text-center">
+          <p class="text-muted mb-0 py-2" id = "copyrights"></p>
+        </div>
+      </div>
+      <script type="text/javascript" src="dimitriadis_christos_mai21010.js"></script>
+    </footer>
+  </body>
+</html>
