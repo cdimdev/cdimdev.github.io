@@ -1,3 +1,4 @@
+var userInWorker = localStorage.getItem('userInfo');
 self.addEventListener('install', function (event) {
     console.log('The service worker is being installed.');
     event.waitUntil(
@@ -12,7 +13,8 @@ self.addEventListener('install', function (event) {
                 '/mail.png',
                 '/bootstrap-4.3.1-dist/css/bootstrap.min.css',
                 '/bootstrap-4.3.1-dist/js/jquery.min.js',
-                '/bootstrap-4.3.1-dist/js/bootstrap.bundle.js'
+                '/bootstrap-4.3.1-dist/js/bootstrap.bundle.js',
+                userInWorker.profilePicture
             ]);
         })
     );
