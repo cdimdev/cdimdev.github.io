@@ -367,6 +367,4 @@ document.getElementById('edit-mode-toggle').addEventListener('click', function (
 });
 
 
-if(!navigator.online) {
-   $(this).attr('src', 'person-icon.png');
-}
+document.getElementById('profilePicture-info').addEventListener('error' function (e) => e.target.src = 'person-icon.png');
