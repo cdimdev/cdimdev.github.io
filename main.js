@@ -38,7 +38,7 @@ function setDefaultTexts() {
     style: "width: 30%",
     "aria-valuenow": "30",
   });
-  document.getElementById("editable-paragraph").innerHTML =?? dummyParagraph;
+  document.getElementById("editable-paragraph").innerHTML = dummyParagraph;
   document.getElementById("editable-paragraph-mobile").innerHTML = document.getElementById("editable-paragraph").innerHTML.slice(0,150)+ '...';
 }
 
