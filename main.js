@@ -17,17 +17,6 @@ const maxHideMode = "hidden-max";
 var currentHideMode = noneHideMode;
 var totalScore = 0;
 var initializationForm = document.getElementById('myModal');
-debugger;
-var editedContentData = localStorage.getItem('editedContentData') != null ? JSON.parse(localStorage.getItem('editedContentData')) : [];
-
-function setEditedContentData() {
-  editedContentData.forEach(function (item) {
-    document.getElementById(item.id).innerHTML = item.value;
-  });
-}
-
-setEditedContentData();
-
 function setDefaultTexts() {
   setAttributes(document.getElementById("head-stat-1"), {
     style: "width: 80%",
@@ -54,6 +43,17 @@ function setDefaultTexts() {
 }
 
 setDefaultTexts();
+var editedContentData = localStorage.getItem('editedContentData') != null ? JSON.parse(localStorage.getItem('editedContentData')) : [];
+
+function setEditedContentData() {
+  editedContentData.forEach(function (item) {
+    document.getElementById(item.id).innerHTML = item.value;
+  });
+}
+
+setEditedContentData();
+
+
 
 function setAttributes(el, attrs) {
   for (var key in attrs) {
@@ -121,7 +121,6 @@ function requiredDataExist() {
 }
 
 function initDataFromStorageOnFailRequestInitialize() {
-  debugger;
   let userInfoJSON = localStorage.getItem('userInfo');
   userInfo = userInfoJSON
     ? JSON.parse(userInfoJSON)
