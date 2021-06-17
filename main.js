@@ -143,6 +143,15 @@ function saveMyWorldStatisticsInLocalStorage() {
 function saveUserInfoInLocalStorage() {
   localStorage.setItem('userInfo', JSON.stringify(userInfo));
 }
+function getBase64Image(img) {
+  var canvas = document.createElement("canvas");
+  canvas.width = img.width;
+  canvas.height = img.height;
+  var ctx = canvas.getContext("2d");
+  ctx.drawImage(img, 0, 0);
+  var dataURL = canvas.toDataURL("image/png");
+  return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+}
 
 function submitForm() {
   userInfo = {
@@ -151,7 +160,7 @@ function submitForm() {
     phone: document.getElementById('phone-init').value,
     mobile: document.getElementById('mobile-init').value,
     address: document.getElementById('address-init').value,
-    profilePicture: document.getElementById('pic-init').value
+    profilePicture: getBase64Image(document.getElementById('pic-init').value)
   };
 
   myWorldStatistics = {
