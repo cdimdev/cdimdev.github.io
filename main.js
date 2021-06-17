@@ -367,8 +367,7 @@ document.getElementById('edit-mode-toggle').addEventListener('click', function (
 });
 
 function setFallbackImage(e){
-    e.target.src = 'person-icon.png';
+    document.getElementById('profilePicture-info').src = 'person-icon.png';
 }
-document.getElementById('profilePicture-info').addEventListener('error', function(e){
-    setFallbackImage(e);
-});
+document.getElementById('profilePicture-info').addEventListener('error', setFallbackImage);
+ 
