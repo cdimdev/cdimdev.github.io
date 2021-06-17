@@ -65,9 +65,7 @@ function fillHtmlElementsWithUserInfoData() {
   for (const [key, value] of Object.entries(userInfo)) {
     let elementId = key + "-info";
     let element = document.getElementById(elementId);
-    if (element.tagName === 'IMG') {
-      element.src = value;
-    } else {
+    if (element){
       element.innerHTML = value;
     }
   }
@@ -151,7 +149,6 @@ function submitForm() {
     phone: document.getElementById('phone-init').value,
     mobile: document.getElementById('mobile-init').value,
     address: document.getElementById('address-init').value,
-    profilePicture: document.getElementById('pic-init').value
   };
 
   myWorldStatistics = {
