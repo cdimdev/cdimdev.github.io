@@ -1,5 +1,10 @@
 'use strict';
 var initializationForm = document.getElementById('myModal');
+const noneHideMode = "hidden-none";
+const minHideMode = "hidden-min";
+const maxHideMode = "hidden-max";
+var currentHideMode = noneHideMode;
+var totalScore = 0;
 var editedContentData = localStorage.getItem('editedContentData') != null ? JSON.parse(localStorage.getItem('editedContentData')) : [];
 
 function setEditedContentData() {
