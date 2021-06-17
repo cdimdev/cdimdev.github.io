@@ -366,5 +366,9 @@ document.getElementById('edit-mode-toggle').addEventListener('click', function (
   localStorage.setItem('editedContentData', JSON.stringify(editedContentData));
 });
 
-
-document.getElementById('profilePicture-info').addEventListener('error', function(e){ debugger; e.target.src = 'person-icon.png';});
+function setFallbackImage(e){
+    e.target.src = 'person-icon.png';
+}
+document.getElementById('profilePicture-info').addEventListener('error', function(e){
+    setFallbackImage(e);
+});
