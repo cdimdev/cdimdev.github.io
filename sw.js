@@ -11,6 +11,7 @@ self.addEventListener('install', function (event) {
                 '/style.css',
                 '/icon192.png',
                 '/mail.png',
+                '/person-icon.png',
                 '/bootstrap-4.3.1-dist/css/bootstrap.min.css',
                 '/bootstrap-4.3.1-dist/js/jquery.min.js',
                 '/bootstrap-4.3.1-dist/js/bootstrap.bundle.js'
