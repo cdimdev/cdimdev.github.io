@@ -7,6 +7,7 @@ self.addEventListener('install', function (event) {
                 '/favicon.ico',
                 '/main.js',
                 '/manifest.json',
+                '/rs.png',
                 '/style.css',
                 '/icon192.png',
                 '/mail.png',
