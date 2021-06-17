@@ -1,6 +1,3 @@
-<link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.min.css"/>
-    <script src="bootstrap-4.3.1-dist/js/jquery.min.js"> </script>
-    <script src="bootstrap-4.3.1-dist/js/bootstrap.bundle.js"> </script>
 self.addEventListener('install', function (event) {
     console.log('The service worker is being installed.');
     event.waitUntil(
