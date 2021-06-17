@@ -9,7 +9,6 @@ const minHideMode = "hidden-min";
 const maxHideMode = "hidden-max";
 var currentHideMode = noneHideMode;
 var totalScore = 0;
-var initializationForm = document.getElementById('myModal');
 function setDefaultTexts() {
   setAttributes(document.getElementById("head-stat-1"), {
     style: "width: 80%",
