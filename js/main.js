@@ -1,5 +1,5 @@
 'use strict';
-
+var initializationForm = document.getElementById('myModal');
 var editedContentData = localStorage.getItem('editedContentData') != null ? JSON.parse(localStorage.getItem('editedContentData')) : [];
 
 function setEditedContentData() {
