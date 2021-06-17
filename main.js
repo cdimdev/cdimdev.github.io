@@ -366,8 +366,7 @@ document.getElementById('edit-mode-toggle').addEventListener('click', function (
   localStorage.setItem('editedContentData', JSON.stringify(editedContentData));
 });
 
-$('#profilePicture-info').on('error', function() {
-    if(userInfo.profilePicture) {
-      $(this).attr('src', 'person-icon.png');    // show a fallback image if there is an error
-    }
-});
+
+if(!navigator.online) {
+   $(this).attr('src', 'person-icon.png');
+}
