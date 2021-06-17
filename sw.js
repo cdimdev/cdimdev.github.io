@@ -5,7 +5,9 @@ self.addEventListener('install', function (event) {
             return cache.addAll([
                 '/index.html',
                 '/favicon.ico',
-                '/main.js',
+                '/js/main.js',
+                '/js/setDefaultTexts.js',
+                '/js/startServiceWorker.js',
                 '/manifest.json',
                 '/rs.png',
                 '/style.css',
