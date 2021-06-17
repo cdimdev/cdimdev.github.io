@@ -1,7 +1,7 @@
 self.addEventListener('install', function (event) {
     console.log('The service worker is being installed.');
     event.waitUntil(
-        caches.open('to-do').then(function(cache) {
+        caches.open('ergasia_3').then(function(cache) {
             return cache.addAll([
                 '/index.html',
                 '/favicon.ico',
