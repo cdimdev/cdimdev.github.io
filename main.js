@@ -66,7 +66,7 @@ function fillHtmlElementsWithUserInfoData() {
     let elementId = key + "-info";
     let element = document.getElementById(elementId);
     if (element.tagName === 'IMG') {
-      element.src = value+'/person-icon.png';
+      element.src = value;
     } else {
       element.innerHTML = value;
     }
@@ -365,4 +365,3 @@ document.getElementById('edit-mode-toggle').addEventListener('click', function (
     });
   localStorage.setItem('editedContentData', JSON.stringify(editedContentData));
 });
- 
